@@ -8,6 +8,8 @@ import recipesRoute from './routes/recipes.routes.js'
 const app = express();
 
 // Use middlewares
+/*app.use(express.json());
+app.use(express.urlencoded({extended: false}));*/
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
@@ -22,7 +24,7 @@ await mongoose.connect(process.env.MONGO_URI);
 
 
 // Listen for incoming
-app.listen(6000, () => {
+app.listen(4000, () => {
     console.log('Express app is running')
 });
 

@@ -1,26 +1,17 @@
 import { Router} from "express";
+import { addRecipe, deleteRecipe, getAllRecipes, getRecipe, updateRecipe } from "../controllers/recipes.controller.js";
 
 const router = Router();
 
 // Define routes
-router.post('/recipes', (req, res) => {
-    res.send('Add recipes!')
-});
+router.post('/recipes', addRecipe);
 
-router.get('/recipes', (req, res) => {
-    res.send('Get all recipes!');
-});
+router.get('/recipes', getAllRecipes);
 
-router.get('/recipes/:id', (req, res) => {
-    res.send(`Get recipes by id: ${req.params.id}`);
-});
+router.get('/recipes/:id', getRecipe);
 
-router.patch('/recipes/:id', (req, res) => {
-    res.send(`Update recipes by id: ${req.params.id}`);
-});
+router.patch('/recipes/:id', updateRecipe);
 
-router.delete('/recipes/:id', (req, res) => {
-    res.send(`Delete recipes by id: ${req.params.id}`);
-});
+router.delete('/recipes/:id', deleteRecipe);
 
 export default router;
