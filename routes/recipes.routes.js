@@ -1,14 +1,23 @@
 import { Router} from "express";
 import { addRecipe, deleteRecipe, getAllRecipes, getRecipe, updateRecipe } from "../controllers/recipes.controller.js";
 import multer from "multer";
+import {multerSaveFilesOrg} from 'multer-savefilesorg'; 
 
-
-// Create multer upload middlewre
-const upload = multer({dest: 'uploads/images'});
 
 
 // Create recipes router
 const router = Router();
+
+
+// Create multer upload middleware
+const upload = multer({
+    storage: multerSaveFilesOrg({
+        serverPath: `https://savefiles.org/api/v1/uploads`,
+        apiAccessToken: process.env.SAVEFILESORG_API_KEY,
+        relativePath: '/recipes/images/*'
+    })
+  });
+
 
 // Define routes
 router.post('/recipes', upload.single('image'), addRecipe);

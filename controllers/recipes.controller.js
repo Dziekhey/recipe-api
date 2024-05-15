@@ -14,7 +14,7 @@ export const addRecipe = async (req, res, next) => {
   }
 };
 
-export const getAllRecipes = async (req, res) => {
+export const getAllRecipes = async (req, res, next) => {
   try {
     //  Get all recipes from database
     const findResults = await RecipeModel.find();
